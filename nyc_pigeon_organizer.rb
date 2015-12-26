@@ -7,9 +7,7 @@ def nyc_pigeon_organizer(data)
         if(!(organized.keys.include?(pigeon)))
           organized[pigeon] = {color: [], gender: [], lives: []}
           organized[pigeon][info_type] << attribute.to_s
-          puts(organized)
         else
-          puts(organized)
           organized[pigeon][info_type] << attribute.to_s
         end
       end
