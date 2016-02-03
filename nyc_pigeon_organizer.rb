@@ -1,28 +1,28 @@
 require 'pry'
-def nyc_pigeon_organizer(data)
+def nyc_pigeon_organizer(initial_data)
   # write your code here!
-  template = new_template(pigeons_name_array(data))
-  template = fill_data(data, template, :gender)
-  template = fill_data(data, template, :color)
-  fill_data(data, template, :lives)
+  template = new_template(pigeons_name_array(initial_data))
+  template = fill_initial_data(initial_data, template, :gender)
+  template = fill_initial_data(initial_data, template, :color)
+  fill_initial_data(initial_data, template, :lives)
 end
 
-def fill_data(data, template, data_type)
+def fill_initial_data(initial_data, template, attribute)
   template.keys.each do |pigeon|
-    template = get_pigeon_data(data, template, pigeon, data_type)
+    template = get_pigeon_initial_data(initial_data, template, pigeon, attribute)
   end
   template
 end
 
-def get_pigeon_data(data, template, pigeon, data_type)
-  data[data_type].each do |pigeon_stat, pigeons|
-    template[pigeon][data_type] << pigeon_stat.to_s if pigeons.include?(pigeon)
+def get_pigeon_initial_data(initial_data, template, pigeon, attribute)
+  initial_data[attribute].each do |pigeon_stat, pigeons|
+    template[pigeon][attribute] << pigeon_stat.to_s if pigeons.include?(pigeon)
   end
   template
 end
 
-def pigeons_name_array(data)
-  data[:gender][:male] + data[:gender][:female]
+def pigeons_name_array(initial_data)
+  initial_data[:gender][:male] + initial_data[:gender][:female]
 end
 
 def new_template(array)
@@ -33,29 +33,29 @@ def new_template(array)
   hash
 end
 
-# def fill_gender(data, template)
+# def fill_gender(initial_data, template)
 #   template.keys.each do |pigeon|
-#     template = get_pigeon_gender(data, template, pigeon)
+#     template = get_pigeon_gender(initial_data, template, pigeon)
 #   end
 #   template
 # end
 
-# def get_pigeon_gender(data, template, pigeon)
-#   data[:gender].each do |sex, pigeons|
+# def get_pigeon_gender(initial_data, template, pigeon)
+#   initial_data[:gender].each do |sex, pigeons|
 #     template[pigeon][:gender] << sex.to_s if pigeons.include?(pigeon)
 #   end
 #   template
 # end
 
-# def fill_color(data, template)
+# def fill_color(initial_data, template)
 #   template.keys.each do |pigeon|
-#     template = get_pigeon_color(data, template, pigeon)
+#     template = get_pigeon_color(initial_data, template, pigeon)
 #   end
 #   template
 # end
 
-# def get_pigeon_color(data, template, pigeon)
-#   data[:color].each do |color, pigeons|
+# def get_pigeon_color(initial_data, template, pigeon)
+#   initial_data[:color].each do |color, pigeons|
 #     template[pigeon][:color] << color.to_s if pigeons.include?(pigeon)
 #   end
 #   template
