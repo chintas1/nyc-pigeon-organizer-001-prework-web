@@ -1,7 +1,7 @@
 require 'pry'
 def nyc_pigeon_organizer(initial_data)
   # write your code here!
-  template = new_template(pigeons_name_array(initial_data))
+  template = new_data_form_template(pigeons_name_array(initial_data))
   template = fill_initial_data(initial_data, template, :gender)
   template = fill_initial_data(initial_data, template, :color)
   fill_initial_data(initial_data, template, :lives)
@@ -25,12 +25,10 @@ def pigeons_name_array(initial_data)
   initial_data.fetch(:gender).fetch(:male) + initial_data.fetch(:gender).fetch(:female)
 end
 
-def new_template(array)
-  hash = Hash.new
-  array.each do |element|
-    hash[element] = {color: [], gender: [], lives:[]}
+def new_data_form_template(pigeon_names)
+  pigeon_names.each_with_object({}) do |pigeon_name, new_data_template|
+    new_data_template[pigeon_name] = {color: [], gender: [], lives:[]}
   end
-  hash
 end
 
 # def fill_gender(initial_data, template)
