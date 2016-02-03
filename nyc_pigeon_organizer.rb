@@ -15,14 +15,14 @@ def fill_initial_data(initial_data, template, attribute)
 end
 
 def get_pigeon_initial_data(initial_data, template, pigeon, attribute)
-  initial_data[attribute].each do |pigeon_attribute_value, pigeons|
-    template[pigeon][attribute] << pigeon_attribute_value.to_s if pigeons.include?(pigeon)
+  initial_data.fetch(attribute).each do |pigeon_attribute_value, pigeons_w_attribute|
+    template.fetch(pigeon).fetch(attribute) << pigeon_attribute_value.to_s if pigeons_w_attribute.include?(pigeon)
   end
   template
 end
 
 def pigeons_name_array(initial_data)
-  initial_data[:gender][:male] + initial_data[:gender][:female]
+  initial_data.fetch(:gender).fetch(:male) + initial_data.fetch(:gender).fetch(:female)
 end
 
 def new_template(array)
