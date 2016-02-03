@@ -15,8 +15,8 @@ def fill_initial_data(initial_data, template, attribute)
 end
 
 def get_pigeon_initial_data(initial_data, template, pigeon, attribute)
-  initial_data[attribute].each do |pigeon_stat, pigeons|
-    template[pigeon][attribute] << pigeon_stat.to_s if pigeons.include?(pigeon)
+  initial_data[attribute].each do |pigeon_attribute_value, pigeons|
+    template[pigeon][attribute] << pigeon_attribute_value.to_s if pigeons.include?(pigeon)
   end
   template
 end
