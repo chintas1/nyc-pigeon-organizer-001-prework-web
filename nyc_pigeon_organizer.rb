@@ -2,12 +2,12 @@ require 'pry'
 def nyc_pigeon_organizer(initial_data)
   # write your code here!
   template = new_data_form_template(pigeons_name_array(initial_data))
-  template = fill_initial_data(initial_data, template, :gender)
-  template = fill_initial_data(initial_data, template, :color)
-  fill_initial_data(initial_data, template, :lives)
+  template = fill_with_initial_data(initial_data, template, :gender)
+  template = fill_with_initial_data(initial_data, template, :color)
+  fill_with_initial_data(initial_data, template, :lives)
 end
 
-def fill_initial_data(initial_data, template, attribute)
+def fill_with_initial_data(initial_data, template, attribute)
   template.keys.each do |pigeon|
     template = get_pigeon_initial_data(initial_data, template, pigeon, attribute)
   end
